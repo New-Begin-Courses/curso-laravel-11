@@ -19,7 +19,6 @@
         pode deletar
     @endcan --}}
 
-
     @can('is-admin')
         <form action="{{ route('users.destroy', $user->id) }}" method="post">
             @csrf
