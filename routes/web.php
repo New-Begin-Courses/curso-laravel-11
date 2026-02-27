@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\CheckIfIsAdmin;
+use App\Http\Middleware\TesteMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,7 +14,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')
+// Treinamento de Middleware com o Mateus
+/* Route::get('/test', function () {
+    return 'Olá Mundo!';
+})->name('test'); */
+
+Route::middleware(['auth'])
     ->prefix('admin')
     ->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
